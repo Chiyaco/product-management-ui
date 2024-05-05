@@ -1,0 +1,28 @@
+<form>
+    <!-- <div class="mb-3">
+        <label for="id" class="form-label">Id</label>
+        <input type="text"  disabled="false" class="form-control" [(ngModel)]="id" name="id">
+    </div> -->
+    <div class="mb-3">
+        <label for="name" class="form-label">Product Name</label>
+        <input type="text" class="form-control" [(ngModel)]="name" name="name">
+    </div>
+    <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <input type="text" class="form-control" [(ngModel)]="category" name="category">
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" class="form-control" [(ngModel)]="price" name="price">
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input type="description" class="form-control" [(ngModel)]="description" name="description">
+    </div>
+    <button (click)="addProduct()" *ngIf="product.id==null" class="btn btn-primary">
+        Add
+    </button>
+    <button (click)="updateProduct()" *ngIf="product.id!=null" class="btn btn-primary">
+        Update
+    </button>
+</form>

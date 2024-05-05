@@ -1,0 +1,15 @@
+#add-success-alert,
+#update-success-alert,
+#delete-success-alert,
+#delete-error-alert{
+    display: none;
+}
+
+#add-success-alert,
+#update-success-alert,
+#delete-success-alert,
+#delete-error-alert{
+ 
+    animation-duration: 4s;
+    animation-name: fadeInAndOut;
+}
