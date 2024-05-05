@@ -28,4 +28,9 @@ export class ProductApiService {
     console.log(id);
     return this.http.delete(this.productAPIUrl + `/Product/deleteProduct/${id}`)
   }
+
+  // Category
+  getCategoryList():Observable<any[]> {
+    return this.http.get<any>(this.productAPIUrl + '/Category/getCategories');
+  }
 }

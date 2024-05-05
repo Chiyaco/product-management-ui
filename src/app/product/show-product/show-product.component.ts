@@ -8,14 +8,32 @@ import { ProductApiService } from 'src/app/product-api.service';
 })
 export class ShowProductComponent implements OnInit {
   productList$!: Observable<any[]>;
+  categoryList$!: Observable<any[]>;
+  categoryTypesList:any=[];
 
   // Map to display data associate with foreign keys
-  productMap: Map<number, string> = new Map();
+  categoryTypesMap: Map<number, string> = new Map();
 
   constructor(private service: ProductApiService) {}
 
   ngOnInit(): void {
     this.productList$ = this.service.getProductList();
+    this.categoryList$ = this.service.getCategoryList();
+    this.refreshCategoryTypesMap();
+  }
+
+  refreshCategoryTypesMap() {
+    this.service.getCategoryList().subscribe(data => {
+      console.log(data);
+      
+    this.categoryTypesList = data;
+
+      for(let i = 0; i < data.length; i++)
+      {
+        this.categoryTypesMap.set(this.categoryTypesList[i].id, 
+          this.categoryTypesList[i].categoryName);
+      }
+    })
   }
 
   // Variables (properties)
@@ -29,7 +47,7 @@ export class ShowProductComponent implements OnInit {
     this.product = {
       id: null,
       name: null,
-      category: null,
+      categoryId: 0,
       price: 0,
       description: null,
     };

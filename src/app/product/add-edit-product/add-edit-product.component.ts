@@ -12,26 +12,28 @@ export class AddEditProductComponent implements OnInit {
 
   id: string = '';
   name: string = '';
-  category: string = '';
+  categoryId: number = 0;
   price!: number;
   description: string = '';
   productList$!: Observable<any[]>;
+  categoryList$!: Observable<any[]>;
 
   constructor(private service: ProductApiService) {}
 
   ngOnInit(): void {
     (this.id = this.product.id),
       (this.name = this.product.name),
-      (this.category = this.product.category),
+      (this.categoryId = this.product.categoryId),
       (this.price = this.product.price),
       (this.description = this.product.description),
       (this.productList$ = this.service.getProductList());
+      (this.categoryList$ = this.service.getCategoryList());
   }
 
   addProduct() {
     var product = {
       name: this.name,
-      category: this.category,
+      categoryId: this.categoryId,
       price: this.price,
       description: this.description,
     };
@@ -61,7 +63,7 @@ export class AddEditProductComponent implements OnInit {
     var product = {
       id:this.id,
       name: this.name,
-      category: this.category,
+      categoryId: this.categoryId,
       price: this.price,
       description: this.description,
     };
